@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: auth
+        image: registry.local:5000/auth
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+        env:
+          - name: DEPLOsY_ENV
+            value: "dev"
+          - name: GOTRACEBACK
+            value: "all"
+          - name: ACCESS_TOKEN_KEY
+            value: "ACCESS_TOKEN_KEY"
+          - name: REFRESH_TOKEN_KEY
+            value: "REFRESH_TOKEN_KEY"
+          - name: DATABASE_DSN
+            value: "host=auth-postgresql dbname=auth-db user=postgres password= sslmode=disable"
+          - name: NOTIFICATION_BASE_URL
+            value: "http://notification:8080"

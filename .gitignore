@@ -1,0 +1,9 @@
+.idea
+.vscode
+/req.http
+/dev.Dockerfile
+*.code-workspace
+# Local History for Visual Studio Code
+.history/
+env.sh
+/k8s/base/secrets.yaml

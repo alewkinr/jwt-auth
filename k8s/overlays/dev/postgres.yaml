@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: auth-postgresql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-postgresql
+  template:
+    metadata:
+      labels:
+        app: auth-postgresql
+    spec:
+      containers:
+        - name: auth-postgresql
+          image: postgres:10.5
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: "auth-db"
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: ""
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-postgresql
+spec:
+  ports:
+    - port: 5432
+      name: psql
+      targetPort: 5432
+  selector:
+    app: auth-postgresql
+

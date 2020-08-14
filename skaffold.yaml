@@ -1,0 +1,59 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: auth
+build:
+  tagPolicy:
+    gitCommit: {}
+  artifacts:
+  - image: cr.yandex/secured/auth
+deploy:
+  kustomize:
+    path: ./k8s/base
+
+profiles:
+  - name: dev
+    build:
+      local:
+        push: true
+        useBuildkit: true
+      artifacts:
+        - image: registry.local:5000/auth
+    activation:
+      - env: DEPLOY_ENV=dev
+      - command: dev
+    deploy:
+      kubeContext: k3s-default
+      kustomize:
+        path: ./k8s/overlays/dev
+
+  - name: debug
+    build:
+      local:
+        push: true
+        useBuildkit: true
+      artifacts:
+        - image: registry.local:5000/auth
+          docker:
+            buildArgs:
+              devArgs: "all=-N -l"
+    deploy:
+      kubeContext: k3s-default
+      kustomize:
+        path: ./k8s/overlays/dev
+    activation:
+      - command: debug
+
+  - name: staging
+    activation:
+      - env: DEPLOY_ENV=staging
+    deploy:
+      kustomize:
+        path: ./k8s/overlays/stg
+
+  - name: production
+    activation:
+      - env: DEPLOY_ENV=production
+    deploy:
+      kustomize:
+        path: ./k8s/overlays/prod

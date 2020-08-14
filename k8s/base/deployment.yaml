@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8010'
+    spec:
+      containers:
+      - name: auth
+        image: cr.yandex/secured/auth:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+          - containerPort: 8010
+        env:
+          - name: STATSD_HOST
+            value: "localhost"
+          - name: STATSD_PORT
+            value: "8126"
+          - name: APP_NAME
+            value: "auth"
+          - name: SENTRY_DSN
+            value: "https://example.com"
+        livenessProbe:
+          httpGet:
+            path: /live
+            port: 8010
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8010
+            scheme: HTTP
+          initialDelaySeconds: 5
+          timeoutSeconds: 1

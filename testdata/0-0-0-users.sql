@@ -1,0 +1,1 @@
+INSERT INTO public."user" (email, password, role, created_on, last_login, name, phone, status) VALUES ('alewkinr@gmail.com', '$2a$10$IRsb.EWgkegb2w0s4dbfNOjn4FknLYJGDw0e70oGAOHxKlVKmzTWi', 'client', '2020-04-23 19:40:43.631265', null, 'Рамиль', '+71111111111', 'needs_activation');

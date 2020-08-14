@@ -1,0 +1,20 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: auth
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`api.example.com`) && PathPrefix(`/auth`)
+      kind: Rule
+      services:
+        - name: auth
+          port: 8080
+      middlewares:
+        - name: cors-header
+        - name: stripprefix
+        - name: redirectscheme
+  tls:
+    certResolver: myresolver

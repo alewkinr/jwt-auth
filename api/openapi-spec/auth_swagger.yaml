@@ -1,0 +1,127 @@
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Подтверждение сессии кодом из СМС"
+  contact:
+    email: "alewkinr@gmail.com"
+host: "127.0.0.1:8082"
+basePath: "/api/v1"
+tags:
+- name: "auth"
+  description: ""
+schemes:
+- "http"
+paths:
+  /phone_sessions/{sessionId}/sms_code:
+    put:
+      tags:
+      - "auth"
+      summary: "Reschedule your occupation."
+      description: ""
+      parameters:
+        - name: sessionId
+          in: path
+          description: "идентификатор сессии uuid"
+          required: true
+          type: string
+          format: uuid
+        - in: body
+          name: "body"
+          required: true
+          schema:
+            $ref: "#/definitions/request"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "
+          OK \n
+          Если пользователь по указанному номеру телефона уже существует в сервисе \n
+          в body возвращается sessionId, accessToken и refreshToken
+          \n \n
+          Если пользоватея по аказанному номеру не существует в сервисе \n
+          в body возвращается sessionId
+          "
+          schema:
+            $ref: "#/definitions/response200"
+        204:
+          description: "StatusNoContent
+          \n
+          Приходит в случаях:
+            У пользователя нет активной сессии
+            Телефон или код в запросе отличается от даннх в сессии 
+          "
+          schema:
+            $ref: "#/definitions/response204"
+        400:
+          description: BadRequest 
+          schema:
+            $ref: "#/definitions/response400"
+        429:
+          description: "TooManyRequests"
+          schema:
+            $ref: "#/definitions/response429"
+        500:
+          description: "InternalServerError "
+          schema:
+            $ref: "#/definitions/response500"
+
+
+definitions:
+  request:
+    type: object
+    description: Данные для верификации пользователя по коду подтверждения и номеру телефона
+    properties:
+      phone:
+        type: string
+        description: Номер телефона 
+        example: "+79045710785"
+      code:
+        type: integer
+        description: код подтверждения
+        example: 123
+  response200:
+    type: "object"
+    properties:
+      sessionId:
+        type: "string"
+        example: "7b12338d-7aea-4de9-8ba7-ae9377902fef"
+        description: "Уникальный идентификатор сессии"
+      accessToken:
+        type: "string"
+        example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODg1M...."
+        description: "access token"
+      refreshToken:
+        type: "string"
+        example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJl...."
+  response400:
+    type: "object"
+    properties:
+      error:
+        type: "string"
+        example: "bad request"
+        description: "Ошибка в запросе или идентификаторе пользоваталя sessionId"
+  response204:
+    type: "object"
+    properties:
+      error:
+        type: "string"
+        example: "bad phone number"
+        description: "Ошибка, приходит если нет активной сессии в БД, телефон или код неверен"
+  response429:
+    type: "object"
+    properties:
+      error:
+        type: "string"
+        example: "too many requests, try again later"
+        description: "Ошибка, ограничения rate-лимитов"
+  response500:
+    type: "object"
+    properties:
+      error:
+        type: "string"
+        example: ""
+        description: ""

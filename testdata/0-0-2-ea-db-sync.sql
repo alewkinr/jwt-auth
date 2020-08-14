@@ -1,0 +1,1 @@
+INSERT INTO public.ea_db_sync (tbl_title, last_sync_id, last_sync_ts) VALUES ('auth.user', 0, '1970-01-01 12:00:00.000000');

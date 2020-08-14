@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: auth
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: auth
+          image: cr.yandex/secured/auth:staging
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DEPLOY_ENV
+              value: "staging"
+            - name: STATSD_HOST
+              value: "localhost"
+            - name: STATSD_PORT
+              value: "8126"
+            - name: DATABASE_DSN
+              value: "host=auth-postgresql dbname=auth-db user=postgres password= sslmode=disable"
+            - name: NOTIFICATION_BASE_URL
+              value: "http://notification:8080"
+            - name: ACCESS_TOKEN_KEY
+              value: "ACCESS_TOKEN_KEY"
+            - name: REFRESH_TOKEN_KEY
+              value: "REFRESH_TOKEN_KEY"

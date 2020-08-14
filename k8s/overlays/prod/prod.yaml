@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: auth
+        image: cr.yandex/secured/auth:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+        env:
+          - name: DEPLOY_ENV
+            value: "production"
+          - name: NOTIFICATION_BASE_URL
+            value: "http://notification:8080"
+          - name: ACCESS_TOKEN_KEY
+            valueFrom:
+              secretKeyRef:
+                name: auth
+                key: access_token_key
+          - name: REFRESH_TOKEN_KEY
+            valueFrom:
+              secretKeyRef:
+                name: auth
+                key: refresh_token_key
+          - name: DATABASE_DSN
+            valueFrom:
+              secretKeyRef:
+                name: auth
+                key: database_dsn

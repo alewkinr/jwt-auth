@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: default
+  name: job-testdata-auth
+spec:
+  backoffLimit: 50
+  activeDeadlineSeconds: 100
+  template:
+    spec:
+      volumes:
+        - name: shared-data
+          emptyDir: {}
+      containers:
+        - name: init-auth
+          image: cr.yandex/secured/auth:staging
+          imagePullPolicy: Always
+          command: ['sh', '-c']
+          args: ["cp /testdata/*.sql /test-data"]
+          volumeMounts:
+            - name: shared-data
+              mountPath: /test-data
+        - name: init-testdata
+          imagePullPolicy: IfNotPresent
+          image: cr.yandex/secured/ci-tools:1.0.7
+          command: ['sh', '-c',]
+          args: ['sleep 30s;sqltools/psql_upload_testdata.sh "postgres://postgres@auth-postgresql/auth-db" "/pod-data/*.sql"']
+          volumeMounts:
+            - name: shared-data
+              mountPath: /pod-data
+      restartPolicy: Never

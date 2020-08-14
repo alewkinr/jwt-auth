@@ -1,0 +1,124 @@
+# github.com/beorn7/perks v1.0.1
+github.com/beorn7/perks/quantile
+# github.com/brianvoe/sjwt v0.5.1
+github.com/brianvoe/sjwt
+# github.com/certifi/gocertifi v0.0.0-20200104152315-a6d78f326758
+github.com/certifi/gocertifi
+# github.com/cespare/xxhash/v2 v2.1.0
+github.com/cespare/xxhash/v2
+# github.com/davecgh/go-spew v1.1.1
+github.com/davecgh/go-spew/spew
+# github.com/etsy/statsd v0.8.5
+github.com/etsy/statsd/examples/go
+# github.com/evalphobia/logrus_sentry v0.8.2
+github.com/evalphobia/logrus_sentry
+# github.com/getsentry/raven-go v0.2.0
+github.com/getsentry/raven-go
+# github.com/go-ozzo/ozzo-validation v3.6.0+incompatible
+github.com/go-ozzo/ozzo-validation
+# github.com/go-ozzo/ozzo-validation/v3 v3.8.1
+github.com/go-ozzo/ozzo-validation/v3
+github.com/go-ozzo/ozzo-validation/v3/is
+# github.com/go-playground/assert/v2 v2.0.1
+github.com/go-playground/assert/v2
+# github.com/go-playground/locales v0.13.0
+github.com/go-playground/locales
+github.com/go-playground/locales/currency
+# github.com/go-playground/universal-translator v0.17.0
+github.com/go-playground/universal-translator
+# github.com/go-playground/validator/v10 v10.2.0
+github.com/go-playground/validator/v10
+# github.com/golang/mock v1.2.0
+github.com/golang/mock/gomock
+# github.com/golang/protobuf v1.3.2
+github.com/golang/protobuf/proto
+# github.com/google/uuid v1.1.1
+github.com/google/uuid
+# github.com/gorilla/mux v1.7.3
+github.com/gorilla/mux
+# github.com/jackc/chunkreader/v2 v2.0.0
+github.com/jackc/chunkreader/v2
+# github.com/jackc/pgconn v1.1.0
+github.com/jackc/pgconn
+github.com/jackc/pgconn/internal/ctxwatch
+github.com/jackc/pgconn/stmtcache
+# github.com/jackc/pgio v1.0.0
+github.com/jackc/pgio
+# github.com/jackc/pgpassfile v1.0.0
+github.com/jackc/pgpassfile
+# github.com/jackc/pgproto3/v2 v2.0.0
+github.com/jackc/pgproto3/v2
+# github.com/jackc/pgtype v1.0.2
+github.com/jackc/pgtype
+# github.com/jackc/pgx/v4 v4.1.2
+github.com/jackc/pgx/v4
+github.com/jackc/pgx/v4/internal/sanitize
+github.com/jackc/pgx/v4/stdlib
+# github.com/jmoiron/sqlx v1.2.1-0.20190826204134-d7d95172beb5
+github.com/jmoiron/sqlx
+github.com/jmoiron/sqlx/reflectx
+# github.com/kelseyhightower/envconfig v1.4.0
+github.com/kelseyhightower/envconfig
+# github.com/konsorten/go-windows-terminal-sequences v1.0.2
+github.com/konsorten/go-windows-terminal-sequences
+# github.com/leodido/go-urn v1.2.0
+github.com/leodido/go-urn
+# github.com/matttproud/golang_protobuf_extensions v1.0.1
+github.com/matttproud/golang_protobuf_extensions/pbutil
+# github.com/pkg/errors v0.9.1
+github.com/pkg/errors
+# github.com/pmezard/go-difflib v1.0.0
+github.com/pmezard/go-difflib/difflib
+# github.com/pressly/goose v2.6.0+incompatible
+github.com/pressly/goose
+# github.com/prometheus/client_golang v1.2.1
+github.com/prometheus/client_golang/prometheus
+github.com/prometheus/client_golang/prometheus/internal
+github.com/prometheus/client_golang/prometheus/promhttp
+# github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4
+github.com/prometheus/client_model/go
+# github.com/prometheus/common v0.7.0
+github.com/prometheus/common/expfmt
+github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg
+github.com/prometheus/common/model
+# github.com/prometheus/procfs v0.0.5
+github.com/prometheus/procfs
+github.com/prometheus/procfs/internal/fs
+github.com/prometheus/procfs/internal/util
+# github.com/sethvargo/go-password v0.2.0
+github.com/sethvargo/go-password/password
+# github.com/sirupsen/logrus v1.4.2
+github.com/sirupsen/logrus
+# github.com/stretchr/testify v1.5.1
+github.com/stretchr/testify/assert
+github.com/stretchr/testify/require
+# gitlab.zigmund.online/zigmund-tech/client/notification.git v1.1.5
+gitlab.zigmund.online/zigmund-tech/client/notification.git
+# golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
+golang.org/x/crypto/bcrypt
+golang.org/x/crypto/blowfish
+golang.org/x/crypto/pbkdf2
+# golang.org/x/sys v0.0.0-20191120155948-bd437916bb0e
+golang.org/x/sys/unix
+golang.org/x/sys/windows
+# golang.org/x/text v0.3.2
+golang.org/x/text/cases
+golang.org/x/text/internal
+golang.org/x/text/internal/language
+golang.org/x/text/internal/language/compact
+golang.org/x/text/internal/tag
+golang.org/x/text/language
+golang.org/x/text/runes
+golang.org/x/text/secure/bidirule
+golang.org/x/text/secure/precis
+golang.org/x/text/transform
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
+golang.org/x/text/width
+# golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+golang.org/x/xerrors
+golang.org/x/xerrors/internal
+# gopkg.in/asaskevich/govalidator.v9 v9.0.0-20180315120708-ccb8e960c48f
+gopkg.in/asaskevich/govalidator.v9
+# gopkg.in/yaml.v2 v2.2.8
+gopkg.in/yaml.v2
